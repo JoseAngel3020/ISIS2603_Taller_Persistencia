@@ -1,5 +1,6 @@
 package co.edu.uniandes.dse.TallerPersistencia.entities;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
@@ -15,7 +16,7 @@ public class ProyectoEntity extends BaseEntity{
     private String descripcion;
 
     @PodamExclude
-    @OneToMany(mappedBy = "proyecto")
+    @OneToMany(mappedBy = "proyecto", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TareaEntity> tareas = new ArrayList<>();
 
     @PodamExclude
